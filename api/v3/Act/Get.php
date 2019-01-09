@@ -95,6 +95,8 @@ function _civicrm_api3_act_get_team_members($team_id, $event_id) {
     team_member_data.{$config->getTeamRoleCustomFieldColumnName()} as role,
     ice.{$config->getICEWaarschuwInGevalVanNoodCustomFieldColumnName()} as waarschuw_in_nood,
     ice.{$config->getICETelefoonInGevalVanNoodCustomFieldColumnName()} as telefoon_in_nood,
+    ice.{$config->getICEVerzekeringsnummerCustomFieldColumnName()} as verzekeringsnummer,
+    ice.{$config->getICEBijzonderhedenCustomFieldColumnName()} as bijzonderheden,
     civicrm_participant.status_id as status_id,
     (CASE
       WHEN civicrm_relationship.id IS NOT NULL THEN 1
@@ -146,6 +148,8 @@ function _civicrm_api3_act_get_team_members($team_id, $event_id) {
     $teamMember['role'] = $teamMembersDao->role;
     $teamMember['waarschuw_in_geval_van_nood'] = $teamMembersDao->waarschuw_in_nood;
     $teamMember['telefoon_in_geval_van_nood'] = $teamMembersDao->telefoon_in_nood;
+    $teamMember['verzekeringsnummer'] = $teamMembersDao->verzekeringsnummer;
+    $teamMember['bijzonderheden'] = $teamMembersDao->bijzonderheden;
     $teamMembers[] = $teamMember;
   }
   return $teamMembers;
